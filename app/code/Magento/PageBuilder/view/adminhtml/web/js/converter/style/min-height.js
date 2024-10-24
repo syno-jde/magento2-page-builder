@@ -36,7 +36,9 @@ define(["Magento_PageBuilder/js/utils/object"], function (_object) {
 
     _proto.toDom = function toDom(name, data) {
       var value = (0, _object.get)(data, name);
-      return value.split(/\+|\-|\*|\//).length > 1 ? "calc(" + (0, _object.get)(data, name) + ")" : value;
+      if (value !== undefined) {
+        return value.split(/\+|\-|\*|\//).length > 1 ? "calc(" + (0, _object.get)(data, name) + ")" : value;
+      }
     };
 
     return MinHeight;
