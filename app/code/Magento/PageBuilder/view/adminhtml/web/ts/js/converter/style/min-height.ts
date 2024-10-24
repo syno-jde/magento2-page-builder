@@ -26,11 +26,13 @@ export default class MinHeight implements ConverterInterface {
      *
      * @param name string
      * @param data Object
-     * @returns {string | object}
+     * @returns {string | object | void}
      */
     public toDom(name: string, data: DataObject): string {
         const value = get<string>(data, name);
 
-        return value.split(/\+|\-|\*|\//).length > 1 ? `calc(${get(data, name)})` : value;
+        if (value !== undefined) {
+            return value.split(/\+|\-|\*|\//).length > 1 ? `calc(${get(data, name)})` : value;
+        }
     }
 }
